@@ -96,7 +96,7 @@ export default function HomePage({ navigateTo, communityRef, githubRef }) {
           <span className="block whitespace-nowrap text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">
               RED
-            </span>{" "}
+            </span>
             CLOUD OS
           </span>
 
