@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export function BlurInGradientText() {
   const lines = [
-    "Cloud Adversary",
+    "Multicloud Adversary",
     "Simulation Operating System",
   ];
 
