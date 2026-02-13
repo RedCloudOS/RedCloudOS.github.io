@@ -213,10 +213,12 @@ export default function DownloadPage({ goBack }) {
 
 
 <button
-//   onClick={() => {
-//     // dummy link for now
-//     window.open("/checksums/redcloud-os.sha256", "_blank");
-//   }}
+  onClick={() =>
+    window.open(
+      "https://download.redcloud.training/checksums",
+      "_blank"
+    )
+  }
   className="
     w-full
     px-6 py-3
@@ -234,11 +236,15 @@ export default function DownloadPage({ goBack }) {
 </button>
 
 
+
+
 <button
-//   onClick={() => {
-//     // dummy link for now
-//     window.open("/docs/verify-installation", "_blank");
-//   }}
+  onClick={() =>
+    window.open(
+      "https://download.redcloud.training/verify",
+      "_blank"
+    )
+  }
   className="
     w-full
     px-6 py-3
@@ -254,6 +260,7 @@ export default function DownloadPage({ goBack }) {
 >
   Verify Instructions
 </button>
+
 
 <div
   className="

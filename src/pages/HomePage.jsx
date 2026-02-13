@@ -60,113 +60,112 @@ export default function HomePage({ navigateTo, communityRef, githubRef }) {
   return (
     <>
       {/* HERO SECTION */}
-      <section
-        ref={sectionRef}
-        onMouseMove={!isTouch ? handleMouseMove : undefined}
-        onMouseEnter={!isTouch ? () => setHovered(true) : undefined}
-        onMouseLeave={!isTouch ? () => setHovered(false) : undefined}
-        className="relative w-full flex items-center overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:min-h-screen lg:pt-0 lg:pb-0"
+{/* HERO SECTION */}
+<section
+  ref={sectionRef}
+  onMouseMove={!isTouch ? handleMouseMove : undefined}
+  onMouseEnter={!isTouch ? () => setHovered(true) : undefined}
+  onMouseLeave={!isTouch ? () => setHovered(false) : undefined}
+  className="relative w-full flex items-center overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-32 md:pb-20 lg:min-h-screen lg:pt-0 lg:pb-0"
+>
+
+  {/* FULL HERO GLITCH BACKGROUND */}
+  <div
+    ref={maskRef}
+    className="absolute inset-0 z-0 pointer-events-none transition-opacity duration-200"
+    style={{
+      opacity: hovered ? 0.45 : 0,
+    }}
+  >
+    <LetterGlitch
+      glitchColors={["#ff2e2e", "#ff4d4d", "#ff6a6a", "#ff9b9b"]}
+      glitchSpeed={60}
+      smooth={true}
+      outerVignette={false}
+    />
+  </div>
+
+  {/* HERO CONTENT */}
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+
+    {/* LEFT COLUMN */}
+    <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8 max-w-4xl">
+
+      <div className="animate-slide-in-down">
+        <h1 className="font-display font-extrabold tracking-tight leading-[1.15] sm:leading-[1.05] md:leading-[0.95]">
+          <span className="block whitespace-nowrap text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">
+              RED
+            </span>{" "}
+            CLOUD OS
+          </span>
+
+          <div className="mt-3 sm:mt-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+            <BlurInGradientText />
+          </div>
+        </h1>
+      </div>
+
+      <p
+        className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl animate-slide-in-left leading-relaxed"
+        style={{ animationDelay: "0.1s" }}
       >
-        <div
-          ref={maskRef}
-          className="absolute inset-0 z-20 pointer-events-none transition-opacity duration-200"
-          style={{
-            opacity: hovered ? 0.45 : 0,
-          }}
+        Built for cloud security assessments, red teaming, and infrastructure attacks.
+      </p>
+
+      <div
+        className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full animate-slide-in-up"
+        style={{ animationDelay: "0.2s" }}
+      >
+        <button
+          onClick={() => navigateTo("download")}
+          className="group w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-red-900 via-red-800 to-red-600 hover:from-red-800 hover:via-red-600 hover:to-red-600 transition-all duration-300 font-medium rounded-sm flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-red-700/10 transform hover:scale-105 text-white"
         >
-          <LetterGlitch
-            glitchColors={["#ff2e2e", "#ff4d4d", "#ff6a6a", "#ff9b9b"]}
-            glitchSpeed={60}
-            smooth={true}
-            outerVignette={false}
-          />
-        </div>
+          <Download size={20} />
+          Download ISO
+        </button>
+      </div>
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
-          {/* LEFT COLUMN — TEXT */}
-          <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8 max-w-4xl">
-            <div className="animate-slide-in-down">
-              <h1 className="font-display font-extrabold tracking-tight leading-[1.15] sm:leading-[1.05] md:leading-[0.95]">
-               <span className="block whitespace-nowrap text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-  <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">
-    RED
-  </span>{" "}
-  CLOUD OS
-</span>
+      <div
+        className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 animate-slide-in-up"
+        style={{ animationDelay: "0.3s" }}
+      >
+        <button
+          onClick={() => {
+            githubRef.current?.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }}
+          className="group relative px-4 py-2.5 text-sm sm:text-base rounded-md font-medium text-red-500 bg-red-950/20 border border-red-900/50 backdrop-blur-sm transition-all duration-300 ease-out hover:text-red-300 hover:border-red-600/60 hover:bg-red-950/40 hover:shadow-lg hover:shadow-red-700/30 flex items-center justify-center gap-2"
+        >
+          <Github size={18} />
+          <span className="hidden sm:inline">GitHub Repository</span>
+          <span className="sm:hidden">GitHub</span>
+        </button>
 
+        <button
+          onClick={() => {
+            communityRef.current?.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }}
+          className="group relative px-4 py-2.5 text-sm sm:text-base rounded-md font-medium text-red-500 bg-red-950/20 border border-red-900/50 backdrop-blur-sm transition-all duration-300 ease-out hover:text-red-300 hover:border-red-600/60 hover:bg-red-950/40 hover:shadow-lg hover:shadow-red-700/30 flex items-center justify-center gap-2"
+        >
+          <Users size={18} />
+          Community
+        </button>
+      </div>
+    </div>
 
-                <div className="mt-3 sm:mt-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-                  <BlurInGradientText />
-                </div>
-              </h1>
-            </div>
+    {/* RIGHT COLUMN */}
+    <div className="hidden lg:flex justify-end items-center">
+      <HeroCube />
+    </div>
 
-            <p
-              className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl animate-slide-in-left leading-relaxed"
-              style={{ animationDelay: "0.1s" }}
-            >
-              Built for cloud security assessments, red teaming, and
-              infrastructure attacks.
-            </p>
-
-            <div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full animate-slide-in-up"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <button
-                onClick={() => navigateTo("download")}
-                className="group w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-red-900 via-red-800 to-red-600 hover:from-red-800 hover:via-red-600 hover:to-red-600 transition-all duration-300 font-medium rounded-sm flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-red-700/10 transform hover:scale-105 text-white"
-              >
-                <Download size={20} />
-                Download ISO
-              </button>
-            </div>
-
-            <div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 animate-slide-in-up"
-              style={{ animationDelay: "0.3s" }}
-            >
-              <button
-                onClick={() => {
-                  githubRef.current?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center",
-                  });
-                }}
-                className="group relative px-4 py-2.5 text-sm sm:text-base rounded-md font-medium text-red-500 bg-red-950/20 border border-red-900/50 backdrop-blur-sm transition-all duration-300 ease-out hover:text-red-300 hover:border-red-600/60 hover:bg-red-950/40 hover:shadow-lg hover:shadow-red-700/30 flex items-center justify-center gap-2"
-              >
-                <Github
-                  size={18}
-                  className="transition-transform duration-300 group-hover:scale-110"
-                />
-                <span className="hidden sm:inline">GitHub Repository</span>
-                <span className="sm:hidden">GitHub</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  communityRef.current?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center",
-                  });
-                }}
-                className="group relative px-4 py-2.5 text-sm sm:text-base rounded-md font-medium text-red-500 bg-red-950/20 border border-red-900/50 backdrop-blur-sm transition-all duration-300 ease-out hover:text-red-300 hover:border-red-600/60 hover:bg-red-950/40 hover:shadow-lg hover:shadow-red-700/30 flex items-center justify-center gap-2"
-              >
-                <Users
-                  size={18}
-                  className="transition-transform duration-300 group-hover:scale-110"
-                />
-                Community
-              </button>
-            </div>
-          </div>
-
-          {/* RIGHT COLUMN — CUBE */}
-          <div className="hidden lg:flex justify-end items-center">
-            <HeroCube />
-          </div>
-        </div>
-      </section>
+  </div>
+</section>
 
       {/* WHAT IS SECTION */}
       <ParallaxSection speed={120}>
